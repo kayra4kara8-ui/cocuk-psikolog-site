@@ -49,7 +49,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <span>📞</span>
-                <a href="tel:+905551234567" className="hover:text-sage-300">+90 555 123 45 67</a>
+                <a href="tel:+905386819654" className="hover:text-sage-300">+90 538 681 96 54</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <span>💬</span>
+                <a href="https://wa.me/905386819654?text=Merhaba%2C%20randevu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">WhatsApp'tan Yaz</a>
               </li>
               <li className="flex items-center gap-2">
                 <span>✉️</span>
