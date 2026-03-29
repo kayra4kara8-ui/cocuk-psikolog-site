@@ -1,7 +1,12 @@
 'use client'
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+
+const EMAILJS_SERVICE_ID = 'service_8koo6f7'
+const EMAILJS_TEMPLATE_ID = 'template_4jl104m'
+const EMAILJS_PUBLIC_KEY = '0-l_3NqiiX0m4nZ-4'
 
 const services = [
   { id: 'cocuk-terapi', icon: '🧸', title: 'Çocuk Terapisi', desc: '4–12 yaş', duration: '50 dk' },
@@ -78,9 +83,29 @@ export default function RandevuPage() {
 
   async function handleSubmit() {
     setLoading(true)
-    await new Promise(r => setTimeout(r, 2000))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          phone: form.phone,
+          service: `${selectedService?.icon} ${selectedService?.title}`,
+          date: `${selectedDay?.dayNum} ${selectedDay?.month} ${selectedDay?.dayName}`,
+          time: selectedTime,
+          childAge: `${form.childAge} yaş${form.childGender ? ` · ${form.childGender}` : ''}`,
+          problem: form.problem,
+          notes: form.notes || 'Belirtilmedi',
+        },
+        EMAILJS_PUBLIC_KEY
+      )
+      setSubmitted(true)
+    } catch (error) {
+      alert('Randevu gönderilemedi. Lütfen tekrar deneyin veya telefon ile ulaşın.')
+      console.error('EmailJS error:', error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   function canProceed() {
