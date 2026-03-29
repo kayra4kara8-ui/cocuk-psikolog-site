@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sage: #5c7d5c;
+  --sage-light: #e6ede6;
+  --warm: #faf8f5;
+  --warm-accent: #a8835a;
+  --text-primary: #2d2d2d;
+  --text-muted: #6b6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background-color: #faf8f5;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-sage-600 text-white px-7 py-3.5 rounded-full font-medium text-sm tracking-wide hover:bg-sage-700 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-sage-600 text-sage-700 px-7 py-3 rounded-full font-medium text-sm tracking-wide hover:bg-sage-50 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-sm border border-stone-100 hover:shadow-md transition-shadow duration-200;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-light text-stone-800 leading-tight;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Trust bar */
+.trust-bar {
+  background: linear-gradient(135deg, #f4f7f4 0%, #e6ede6 100%);
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(160deg, #f4f7f4 0%, #faf8f5 40%, #f3ede4 100%);
+}
+
+/* Divider */
+.divider-leaf::before {
+  content: '🌿';
+  display: block;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 1rem auto;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #a8bfa8;
+  border-radius: 3px;
+}
+
+/* Form inputs */
+input, textarea, select {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+/* Progress stepper */
+.step-active {
+  @apply bg-sage-600 text-white;
+}
+
+.step-done {
+  @apply bg-sage-200 text-sage-700;
+}
+
+.step-pending {
+  @apply bg-stone-100 text-stone-400;
+}
